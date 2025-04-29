@@ -20,7 +20,7 @@ on:
         type: string
         required: false
 env:
-  NAMESPACE: microhacker
+  NAMESPACE: greghacker
   APP_NAME: microhacker-auth
 jobs:
   deploy:
