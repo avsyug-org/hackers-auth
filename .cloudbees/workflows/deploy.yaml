@@ -24,7 +24,7 @@ env:
   APP_NAME: microhacker-auth
 jobs:
   deploy:
-    environment: micro-hacker
+    environment: fmdemo-env
     steps:
       - name: Checkout
         uses: cloudbees-io/checkout@v1
@@ -43,20 +43,20 @@ jobs:
             image:
               repository: ${{ secrets.DOCKERHUB_USER }}/hackers-auth
               tag: latest
-            hostname: microhacker-auth.preview.cb-demos.io
+            hostname: greghacker-auth.preview.cb-demos.io
       - name: Register deployed artifact
         uses: cloudbees-io/register-deployed-artifact@v1
         with:
           name: ${{ secrets.DOCKERHUB_USER }}/hackers-auth
           version: latest
           url: "${{ secrets.DOCKERHUB_USER }}/hackers-auth:latest"
-          target-environment: micro-hacker
+          target-environment: fmdemo-env
       - name: Publish evidence
         uses: cloudbees-io/publish-evidence-item@v1
         with:
           content: |-
             ## Deployed environment
-            [Dev frontend](https://microhacker-auth.preview.cb-demos.io/)
+            [Dev frontend](https://greghacker-auth.preview.cb-demos.io/)
 
             Running hackers-auth:latest
           format: MARKDOWN
