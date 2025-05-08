@@ -20,11 +20,11 @@ on:
         type: string
         required: false
 env:
-  NAMESPACE: buglehacker
+  NAMESPACE: buglehacker-test
   APP_NAME: microhacker-auth
 jobs:
   deploy:
-    environment: BugleTest
+    environment: bugletest
     steps:
       - name: Checkout
         uses: cloudbees-io/checkout@v1
@@ -50,7 +50,7 @@ jobs:
           name: ${{ secrets.DOCKERHUB_USER }}/hackers-auth
           version: latest
           url: "${{ secrets.DOCKERHUB_USER }}/hackers-auth:latest"
-          target-environment: BugleTest
+          target-environment: bugletest
       - name: Publish evidence
         uses: cloudbees-io/publish-evidence-item@v1
         with:
